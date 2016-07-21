@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hello, in ChatApp {{ user.nickname() }}, {{ user.email() }} !</h1>
+
+    <form action="/message" method="post">
+        <label for="message_app">Enter the message to post it:</label>
+        <br>
+        <textarea name="input_message" id="message_app" placeholder="Enter message">
+        </textarea>
+        <br>
+        <br>
+        <button type="submit">Post message</button>
+    </form>
+
+    <h1>List of messages</h1>
+    {% for message in list_of_m %}
+        <div class="well well-sm">
+            <ul>
+                <li>{{ user.nickname() }}</li>
+                <li>{{ message.entry_date }}</li>
+                <li>{{ message.text_entered }}</li>
+            </ul>
+        </div>
+    {% endfor %}
+
+{% endblock content %}
